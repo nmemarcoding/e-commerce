@@ -23,5 +23,4 @@ const ItemSchema = new Schema({
     }
 
 }, { timestamps: true })
-
 export default mongoose.model("Item", ItemSchema)

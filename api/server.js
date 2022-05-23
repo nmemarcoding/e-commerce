@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 import cors from "cors"
 import item from "./routes/item.js"
+import auth from "./routes/auth.js"
 const app = express();
 
 dotenv.config;
@@ -15,8 +16,8 @@ app.use(cors({
     AccessControlAllowCredentials: true
 }));
 
-app.use("/api/item", item)
-
+app.use("/api/item", item);
+app.use("/api/auth", auth);
 
 const connect = async() => {
     try {
