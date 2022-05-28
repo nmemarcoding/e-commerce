@@ -14,13 +14,27 @@ router.post('/', async(req, res) => {
     }
 })
 
-// get orders
+// get  all orders
 router.get('/', async(req, res) => {
     try {
         const orders = await Order.find(req.query);
         res.status(200).json(orders)
     } catch (err) {
         res.status(500).json(err.message)
+    }
+})
+
+// get orders by customer id 
+router.get('/:id', async(req, res) => {
+    try {
+
+        const order = await Order.find({ Costomer_id: req.params.id })
+
+        res.status(200).json(order)
+
+    } catch (err) {
+        res.status(500).json(err.message)
+
     }
 })
 
