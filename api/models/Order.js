@@ -9,7 +9,11 @@ const OrderSchema = new mongoose.Schema({
     Items: {
         type: [string]
     },
-    Total: { type: number }
+    Total: { type: number },
+    Status: {
+        type: string,
+        defult: "prosseing"
+    }
 
 }, { timestamps: true })
 
