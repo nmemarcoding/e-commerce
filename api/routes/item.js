@@ -19,14 +19,14 @@ router.post('/', async(req, res) => {
 
 router.get('/', async(req, res) => {
     try {
-        const items = await Item.find();
+        const items = await Item.find(req.query);
         res.status(200).json(items)
     } catch (err) {
         res.status(500).json(err.message)
     }
 })
 
-// get room by id
+// get itwm by id
 router.get('/:id', async(req, res) => {
     try {
 
