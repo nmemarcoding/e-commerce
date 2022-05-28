@@ -4,6 +4,7 @@ import mongoose from "mongoose"
 import cors from "cors"
 import item from "./routes/item.js"
 import auth from "./routes/auth.js"
+import order from "./routes/order.js"
 const app = express();
 
 dotenv.config;
@@ -18,6 +19,7 @@ app.use(cors({
 
 app.use("/api/item", item);
 app.use("/api/auth", auth);
+app.use('/api/order', order);
 
 const connect = async() => {
     try {

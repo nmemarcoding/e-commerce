@@ -3,16 +3,17 @@ const { Schema } = mongoose;
 
 const OrderSchema = new mongoose.Schema({
     Costomer_id: {
-        type: string,
+        type: String,
         required: true
     },
     Items: {
-        type: [string]
+        type: [String]
     },
-    Total: { type: number },
+    Total: { type: Number },
     Status: {
-        type: string,
-        defult: "prosseing"
+        type: String,
+        default: "prosseing",
+
     }
 
 }, { timestamps: true })
