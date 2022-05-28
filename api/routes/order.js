@@ -14,5 +14,14 @@ router.post('/', async(req, res) => {
     }
 })
 
+// get orders
+router.get('/', async(req, res) => {
+    try {
+        const orders = await Order.find(req.query);
+        res.status(200).json(orders)
+    } catch (err) {
+        res.status(500).json(err.message)
+    }
+})
 
 export default router;
