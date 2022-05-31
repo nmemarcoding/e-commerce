@@ -4,8 +4,17 @@ import SignUp from './components/signUp/SignUp';
 import LoginPage from './pages/loginPage/LoginPage.js';
 import { BrowserRouter as Router,Routes,Route, } from 'react-router-dom';
 import SignUpPage from './pages/signUpPage/SignUpPage';
+import Axios from './hook/axios'
 
 function App() {
+  try{
+    Axios.get('/item').then((res)=>{
+      console.log(res.data)
+    })
+    
+  }catch(err){
+    console.log(err)
+  }
   return (
     <Router>
       <div className="app">
