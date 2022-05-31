@@ -1,0 +1,10 @@
+.loginForm__container {
+    width: 50%;
+}
+
+.loginPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20vh;
+}

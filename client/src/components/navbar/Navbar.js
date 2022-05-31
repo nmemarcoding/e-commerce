@@ -36,7 +36,7 @@ export default function Navbars() {
         />
         <Button variant="outline-success">Search</Button>
       </Form>
-      {username ? <Nav.Link href="#action1">Logout</Nav.Link> :<> <Nav.Link href="#action1">Register</Nav.Link> <Nav.Link href="#action1">Login</Nav.Link></> }
+      {username ? <Nav.Link href="#action1">Logout</Nav.Link> :<> <Nav.Link href="signup">Register</Nav.Link> <Nav.Link href="/login">Login</Nav.Link></> }
       
     </Navbar.Collapse>
   </Container>
