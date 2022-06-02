@@ -5,6 +5,7 @@ import LoginPage from './pages/loginPage/LoginPage.js';
 import { BrowserRouter as Router,Routes,Route, } from 'react-router-dom';
 import SignUpPage from './pages/signUpPage/SignUpPage';
 import Axios from './hook/axios'
+import ItemCard from './components/itemCard/ItemCard';
 
 function App() {
   try{
@@ -21,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/signup" element={<><SignUpPage/></>}/>
           <Route path="/login" element={<><LoginPage/></>}/>
-          <Route path="*" element={<><Navbars/></>}/>
+          <Route path="*" element={<><Navbars/><ItemCard/></>}/>
         </Routes>
       </div>
     </Router>

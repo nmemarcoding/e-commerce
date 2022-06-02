@@ -1,8 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import Axios from '../../hook/axios';
 
 export default function Login() {
+    const navigate = useNavigate()
+    const [login,setLogin] = useState('');
+    const [credentials,setCredentials] = useState({
+        username: undefined,
+        password: undefined,
+    })
+    const handleChange = (e) => {
+        setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+        console.log(credentials)
+      };
+      const handleClick  = (e)=>{
+        e.preventDefault();
+       
+
+            Axios.post("auth/login", credentials)
+            .then((res) =>{
+                console.log(res.data.details._id)
+                localStorage.setItem('userId',res.data.details._id);
+                navigate('/');
+            } ).catch((e)=>{
+                setLogin(e.message)
+                console.log(e.message);
+            })
+            
+       
+    }
     return (
         <div className="login">
+        <h3>{setLogin}</h3>
             <form>
         <h3>Sign In</h3>
         <div className="mb-3">
@@ -11,6 +40,8 @@ export default function Login() {
             type="username"
             className="form-control"
             placeholder="Enter username"
+            id="username"
+            onChange={handleChange}
           />
         </div>
         <div className="mb-3">
@@ -19,6 +50,8 @@ export default function Login() {
             type="password"
             className="form-control"
             placeholder="Enter password"
+            id = "password"
+            onChange={handleChange}
           />
         </div>
         <div className="mb-3">
@@ -34,7 +67,7 @@ export default function Login() {
           </div>
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit"  onClick={handleClick} className="btn btn-primary">
             Submit
           </button>
         </div>

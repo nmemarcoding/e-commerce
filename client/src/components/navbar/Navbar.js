@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import{Navbar,Container,Nav,NavDropdown,Form,FormControl,Button} from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbars() {
 
-    const [username,setUsername] = useState('');
+    const [userid,setUserid] = useState(localStorage.getItem('userId'));
+    const navigate = useNavigate();
   return (
     <div className="navbar">
         <Navbar className="w-100" bg="light" expand="lg">
@@ -36,7 +38,7 @@ export default function Navbars() {
         />
         <Button variant="outline-success">Search</Button>
       </Form>
-      {username ? <Nav.Link href="#action1">Logout</Nav.Link> :<> <Nav.Link href="signup">Register</Nav.Link> <Nav.Link href="/login">Login</Nav.Link></> }
+      {userid ? <Nav.Link onClick={()=>{localStorage.removeItem('userId'); window.location.reload() }}>Logout</Nav.Link> :<> <Nav.Link onClick={()=>{navigate('/signup')}}>Register</Nav.Link> <Nav.Link onClick={()=>{navigate('/login')}}>Login</Nav.Link></> }
       
     </Navbar.Collapse>
   </Container>

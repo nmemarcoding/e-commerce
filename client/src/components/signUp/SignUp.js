@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Axios from '../../hook/axios'
 export default function SignUp() {
+    const navigate = useNavigate()
     const [credentials,setCredentials] = useState({
         username: undefined,
         password: undefined,
         email: undefined,  
     })
+    const [signup,setSignup] = useState('');
     const handleChange = (e) => {
         setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
         console.log(credentials)
@@ -13,19 +16,23 @@ export default function SignUp() {
     
     const handleClick  = (e)=>{
         e.preventDefault();
-        try{
+       
 
             Axios.post("auth/register", credentials)
             .then((res) =>{
                 console.log(res.data)
-            } )
+                localStorage.setItem('userId',res.data);
+                navigate('/');
+            } ).catch((e)=>{
+                setSignup(e.message)
+                console.log(e.message);
+            })
             
-        }catch(e){
-            console.log(e);
-        }
+       
     }
     return (
         <div className="signUp">
+            <h3>{signup}</h3>
             <form>
         <h3>Sign Up</h3>
         <div className="mb-3">
