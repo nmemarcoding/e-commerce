@@ -1,0 +1,11 @@
+.sidbar__container {
+    border: solid black;
+    width: 200px;
+    height: 100vh;
+}
+
+.sidebar__item {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
