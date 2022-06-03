@@ -17,7 +17,7 @@ router.post('/register', async(req, res) => {
         });
 
         await newUser.save();
-        res.status(200).send("User has been created.");
+        res.status(200).send(newUser._id);
     } catch (err) {
         res.status(500).json(err.message)
     }
