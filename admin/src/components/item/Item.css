@@ -16,3 +16,25 @@
 .form-controls {
     width: auto;
 }
+
+.image__popup {
+    position: fixed;
+    /* or absolute */
+    top: 0;
+    left: 0%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.307);
+    width: 100vw;
+    height: 100vh;
+}
+
+.image__container {
+    position: fixed;
+    top: 23%;
+    left: 28%;
+}
+
+.popup__image__size {
+    width: 50vh;
+    height: 50vh;
+}

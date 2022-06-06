@@ -3,6 +3,7 @@ import Axios from '../../hooks/axios'
 import './Item.css'
 export default function Item({item}) {
     const [edit,setEdit] = useState(false)
+    const [popup,setPopup] = useState(false);
     const [credentials,setCredentials] = useState({
         name: undefined,
         price: undefined,
@@ -29,6 +30,7 @@ export default function Item({item}) {
         Axios.put(`/item/${item._id}`, credentials)
         .then((res) =>{
             console.log(res.data)
+            setEdit(false)
         } ).catch((e)=>{
             console.log(e.message);
         })
@@ -39,7 +41,7 @@ export default function Item({item}) {
         <div className="item">
             <div className="item__container">
                 <div>{item.name}</div>
-                <img className="item__image" src={item.photo}></img>
+                <img onClick={()=>{setPopup(true)}} className="item__image" src={item.photos[0]}></img>
                 <div>{item.price} $</div>
                 <div>{item.description}</div>
                 <button onClick={hadleEdit}>Edit</button>
@@ -47,6 +49,8 @@ export default function Item({item}) {
                
             </div>
             <br></br>
+
+            {/* edit */}
             {edit === true ? <div className="item__container">
             <input
             type="name"
@@ -79,6 +83,12 @@ export default function Item({item}) {
           <button onClick={saveEdit}>Save</button>
           <button onClick={()=>{setEdit(false)}}>Cancel</button>
             </div> : <div></div>}
+        {popup === true ? <div onClick={()=>{setPopup(false)}} className="image__popup">
+                <dic className="image__container">
+                    <img className="popup__image__size" src={item.photos[0]}></img>
+                </dic>
+            </div> : <div></div>}
+            
             
         </div>
     )
