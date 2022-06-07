@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Axios from '../../hooks/axios'
+import Login from '../login/Login';
 import './Item.css'
 export default function Item({item}) {
     const [edit,setEdit] = useState(false)
     const [popup,setPopup] = useState(false);
+    const [description,setDescription] = useState(false);
     const [credentials,setCredentials] = useState({
         name: undefined,
         price: undefined,
@@ -19,6 +21,7 @@ export default function Item({item}) {
 
             Axios.delete(`/item/${item._id}`).then((res)=>{
                 console.log(res.data)
+                window.location.reload()
             })
         }
 
@@ -31,6 +34,7 @@ export default function Item({item}) {
         .then((res) =>{
             console.log(res.data)
             setEdit(false)
+            window.location.reload()
         } ).catch((e)=>{
             console.log(e.message);
         })
@@ -43,7 +47,7 @@ export default function Item({item}) {
                 <div>{item.name}</div>
                 <img onClick={()=>{setPopup(true)}} className="item__image" src={item.photos[0]}></img>
                 <div>{item.price} $</div>
-                <div>{item.description}</div>
+                <div onClick={()=>{setDescription(true)}}>Description</div>
                 <button onClick={hadleEdit}>Edit</button>
                 <button onClick={hadleDelete}>Delete</button>
                
@@ -88,7 +92,15 @@ export default function Item({item}) {
                     <img className="popup__image__size" src={item.photos[0]}></img>
                 </dic>
             </div> : <div></div>}
-            
+            {description === true ? <div onClick={()=>{setDescription(false)}} className="image__popup">
+                <dic className="image__container">
+                    <div className="description__containder">
+
+                        {item.description}
+                    </div>
+                </dic>
+            </div> : <div></div>}
+         
             
         </div>
     )

@@ -38,3 +38,11 @@
     width: 50vw;
     height: 50vh;
 }
+
+.description__containder {
+    background-color: white;
+    width: 50vw;
+    height: 50vh;
+    padding: 20px;
+    overflow: scroll;
+}
