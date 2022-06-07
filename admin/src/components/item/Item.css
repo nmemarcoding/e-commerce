@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     padding: 8px 20px;
-    border: 1.5px solid;
-    border-radius: 20px;
+    -webkit-box-shadow: 3px 5px 15px -6px #000000;
+    box-shadow: 3px 5px 15px -6px #000000;
     flex-wrap: wrap;
     align-items: center;
 }
