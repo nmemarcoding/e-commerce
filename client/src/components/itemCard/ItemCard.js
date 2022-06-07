@@ -1,15 +1,15 @@
 import React from 'react'
 import "./ItemCard.css"
 
-export default function ItemCard() {
+export default function ItemCard({items}) {
     return (
         <div className="itemCard">
             <div className="card">
-                <img src="https://www.w3schools.com/howto/img_avatar.png"></img>
+                <img src={items.photos[0]}></img>
                 <div className="container">
-                    <h4><b>Item Name</b></h4>
-                    <p><b>22$</b></p>
-                    <p>This is one of the best item in the world</p>
+                    <h4><b>{items.name}</b></h4>
+                    <p><b>{items.price} $</b></p>
+                    <p>{items.description}</p>
                 </div>
                 <button className="addtocard">ADD TO CARD</button>
             </div>
