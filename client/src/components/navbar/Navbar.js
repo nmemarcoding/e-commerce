@@ -8,8 +8,8 @@ export default function Navbars() {
     const [basket,setBasket] = useState(0);
     
     useEffect(() => {
-        if(localStorage.getItem("basket")){
-            setBasket((JSON.parse(localStorage.getItem("basket"))).length)
+        if(sessionStorage.getItem("basket")){
+            setBasket((JSON.parse(sessionStorage.getItem("basket"))).length)
         }
       },[basket]);
     const navigate = useNavigate();
@@ -45,6 +45,7 @@ export default function Navbars() {
           aria-label="Search"
         />
         <Button variant="outline-success">Search</Button>
+        <Nav.Link href="/basket">Basket</Nav.Link>
       </Form>
       {userid ? <Nav.Link onClick={()=>{localStorage.removeItem('userId'); window.location.reload() }}>Logout</Nav.Link> :<> <Nav.Link onClick={()=>{navigate('/signup')}}>Register</Nav.Link> <Nav.Link onClick={()=>{navigate('/login')}}>Login</Nav.Link></> }
       

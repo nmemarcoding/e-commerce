@@ -5,13 +5,13 @@ export default function ItemCard({items}) {
     const basket = ()=>{
         
 
-        if(localStorage.getItem("basket")){
-            const baskets = JSON.parse(localStorage.getItem("basket"))
+        if(sessionStorage.getItem("basket")){
+            const baskets = JSON.parse(sessionStorage.getItem("basket"))
             baskets.push(items);
-            window.localStorage.setItem("basket", JSON.stringify(baskets));
+            window.sessionStorage.setItem("basket", JSON.stringify(baskets));
 
         }else{
-            window.localStorage.setItem("basket", JSON.stringify([items]));
+            window.sessionStorage.setItem("basket", JSON.stringify([items]));
         }
     }
     return (
