@@ -3,20 +3,19 @@ import "./BasketPage.css"
 import Axios from '../../hook/axios.js'
 import ItemCard from '../../components/itemCard/ItemCard.js'
 import BasketItemCard from '../../components/basketItemCard/BasketItemCard';
-
+import { useStateValue } from '../../StateProvider';
+import { getBasketTotal } from '../../reducer';
 export default function BasketPage() {
-    const [items,setItems] = useState();
-    useEffect(() => {
-        if(sessionStorage.getItem("basket")){
-            setItems(JSON.parse(sessionStorage.getItem("basket")))
-        }
-    },[])
+    const [{basket},dispatch] = useStateValue();
+    console.log(basket);
+    
     return (
         <div className="basketPage">
-            {items ? <div className="basketPage__item__container">
-                {items && items.map((data,index)=>(
+            {getBasketTotal(basket)}
+            {basket ? <div className="basketPage__item__container">
+                {basket && basket.map((data,index)=>(
                     <div key = {index} className="item__containers">
-                        < BasketItemCard items = {data}/>
+                        < BasketItemCard items ={data}/>
                     </div>
                     
                 ))}

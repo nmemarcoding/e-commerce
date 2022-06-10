@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import{Navbar,Container,Nav,NavDropdown,Form,FormControl,Button} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useStateValue } from '../../StateProvider';
+import { Link } from 'react-router-dom';
 
 export default function Navbars() {
-
+    const [{basket,user},dispatch] = useStateValue();
     const [userid,setUserid] = useState(localStorage.getItem('userId'));
-    const [basket,setBasket] = useState(0);
     
-    useEffect(() => {
-        if(sessionStorage.getItem("basket")){
-            setBasket((JSON.parse(sessionStorage.getItem("basket"))).length)
-        }
-      },[basket]);
+    
+    
     const navigate = useNavigate();
+    console.log(basket)
   return (
     <div className="navbar">
         <Navbar className="w-100" bg="light" expand="lg">
@@ -26,7 +25,9 @@ export default function Navbars() {
         navbarScroll
       >
         <Nav.Link href="#action1">Home</Nav.Link>
-        <Nav.Link href="#action1">{basket}</Nav.Link>
+        <Link to="/basket">
+            <Nav >{basket?.length}</Nav>
+        </Link>
         <NavDropdown title="Link" id="navbarScrollingDropdown">
           <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
           <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>

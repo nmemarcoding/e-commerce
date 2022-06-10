@@ -1,18 +1,33 @@
 import React from 'react'
 import "./ItemCard.css"
+import { useStateValue } from '../../StateProvider'
+
 
 export default function ItemCard({items}) {
-    const basket = ()=>{
+    const [{basket},dispatch] = useStateValue();
+    
+    const addToBasket = ()=>{
         
 
-        if(sessionStorage.getItem("basket")){
-            const baskets = JSON.parse(sessionStorage.getItem("basket"))
-            baskets.push(items);
-            window.sessionStorage.setItem("basket", JSON.stringify(baskets));
+        // if(sessionStorage.getItem("basket")){
+        //     const baskets = JSON.parse(sessionStorage.getItem("basket"))
+        //     baskets.push(items);
+        //     window.sessionStorage.setItem("basket", JSON.stringify(baskets));
 
-        }else{
-            window.sessionStorage.setItem("basket", JSON.stringify([items]));
-        }
+        // }else{
+        //     window.sessionStorage.setItem("basket", JSON.stringify([items]));
+        // }
+        dispatch({
+            type : "ADD_TO_BASKET",
+            item:{
+                name : items.name,
+                photos: items.photos,
+                price: items.price,
+                type: items.type,
+                _id:items._id,
+                description:items.description
+            }
+        })
     }
     return (
         <div className="itemCard">
@@ -23,7 +38,7 @@ export default function ItemCard({items}) {
                     <p><b>{items.price} $</b></p>
                     <p className="itemCard__description">{items.description}</p>
                 </div>
-                <button className="addtocard"  onClick={basket}>ADD TO CARD</button>
+                <button className="addtocard"  onClick={addToBasket}>ADD TO CARD</button>
             </div>
             
         
