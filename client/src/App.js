@@ -9,6 +9,7 @@ import Axios from './hook/axios'
 import ItemCard from './components/itemCard/ItemCard';
 import ItemPage from './pages/itemsPage/ItemPage';
 import BasketPage from './pages/basketPage/BasketPage';
+import PaymentPage from './pages/paymentPage/PaymentPage';
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
           <Route path="/signup" element={<><SignUpPage/></>}/>
           <Route path="/login" element={<><LoginPage/></>}/>
           <Route path="/basket" element={<><BasketPage/></>}/>
+          <Route path="/payment" element={<><PaymentPage/></>}/>
           <Route path="*" element={<><Navbars/><ItemPage/></>}/>
         </Routes>
       </div>

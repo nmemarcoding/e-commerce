@@ -2,20 +2,38 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-left: 10px;
+    flex: 70%
 }
 
 .item__containers {
     display: flex;
-    flex: 33%;
     justify-content: space-around;
 }
 
 .basketPage {
     margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex: 30%;
+    flex-wrap: wrap-reverse;
 }
 
 .empty {
     align-items: center;
     justify-content: center;
     display: flex;
+}
+
+.subtotal__conatiner {
+    display: flex;
+}
+
+@media (max-width: 609px) {
+    .subtotal__conatiner {
+        display: flex;
+        width: 100%;
+        ;
+        justify-content: center;
+    }
 }

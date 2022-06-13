@@ -12,7 +12,7 @@ export default function BasketPage() {
     
     return (
         <div className="basketPage">
-            <Subtotal/>
+            
             {basket ? <div className="basketPage__item__container">
                 {basket && basket.map((data,index)=>(
                     <div key = {index} className="item__containers">
@@ -21,7 +21,10 @@ export default function BasketPage() {
                     
                 ))}
             </div>: <h1 className="empty">BASKET IS EMPTY</h1>}
-            
+            <div className="subtotal__conatiner">
+                
+                <Subtotal/>
+            </div>
         </div>
     )
 }
