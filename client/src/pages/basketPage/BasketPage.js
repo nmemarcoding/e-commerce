@@ -5,13 +5,14 @@ import ItemCard from '../../components/itemCard/ItemCard.js'
 import BasketItemCard from '../../components/basketItemCard/BasketItemCard';
 import { useStateValue } from '../../StateProvider';
 import { getBasketTotal } from '../../reducer';
+import Subtotal from '../../components/subtotal/Subtotal';
 export default function BasketPage() {
     const [{basket},dispatch] = useStateValue();
     console.log(basket);
     
     return (
         <div className="basketPage">
-            {getBasketTotal(basket)}
+            <Subtotal/>
             {basket ? <div className="basketPage__item__container">
                 {basket && basket.map((data,index)=>(
                     <div key = {index} className="item__containers">
