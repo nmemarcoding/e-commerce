@@ -12,7 +12,7 @@ export default function BasketPage() {
     
     return (
         <div className="basketPage">
-            {JSON.stringify(basket)}
+            
             {basket ? <div className="basketPage__item__container">
                 {basket && basket.map((data,index)=>(
                     <div key = {index} className="item__containers">

@@ -14,7 +14,8 @@ const OrderSchema = new mongoose.Schema({
         type: String,
         default: "prosseing",
 
-    }
+    },
+    Address: { type: String, required: true }
 
 }, { timestamps: true })
 
