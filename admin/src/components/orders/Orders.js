@@ -5,6 +5,7 @@ import './Orders.css'
 export default function Orders({order}) {
     const[start,setStart]= useState(false);
     const [Items,setItems]=useState(order.Items);
+ 
     const startf = ()=>{
         
         setStart(true)
@@ -24,15 +25,17 @@ export default function Orders({order}) {
         Axios.put(`order/${order._id}`,{Status : "shipped"})
         .then((res) =>{
             console.log(res);
+            setItems([])
         } ).catch((e)=>{
            
             console.log(e.message);
         })
+        
     }
    
   return (
+    
     <div className="orders">
-        
         <div className="order__container">
             <div className="customer__detail__container" >
                 <div>{order._id}</div>
@@ -46,7 +49,8 @@ export default function Orders({order}) {
             <div>{item.name}</div>
             <button   onClick={picked} id = {JSON.stringify(item)}>PICKED</button>
         </div>))}</div> : <div></div>}
-
+        
     </div>
+    
   )
 }

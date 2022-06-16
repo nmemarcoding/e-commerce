@@ -11,7 +11,7 @@ export default function PaymentPage() {
         Costomer_id: localStorage.getItem("userId"),
         Items: basket,
         Total: getBasketTotal(basket),
-        Status: "prosseing",
+        Status: "processing",
         Address: undefined
 
     })
