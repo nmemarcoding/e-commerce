@@ -8,7 +8,16 @@ export default function OrderPage() {
     useEffect(() => {
         Axios.get("order")
         .then((res) =>{
-            setOrderData(res.data)
+            setOrderData(res.data.sort((a,b)=>{const bandA = a.Status.toUpperCase();
+                const bandB = b.Status.toUpperCase();
+              
+                let comparison = 0;
+                if (bandA > bandB) {
+                  comparison = 1;
+                } else if (bandA < bandB) {
+                  comparison = -1;
+                }
+                return comparison;}))
             console.log(orderData)
     
            
@@ -22,7 +31,12 @@ export default function OrderPage() {
                 
                 {orderData && orderData.map((data,index)=>(
                     <div key = {index}>
-                        <Orders order ={data}/>
+                        
+                        {data.Status === "processing" ? <Orders order ={data}/> : <div className="shipped">
+                            <div>{data._id}</div>
+                            <div>SHIPPED</div>
+
+                            </div>}
                     </div>
                     
                 ))}
@@ -31,3 +45,4 @@ export default function OrderPage() {
         </div>
     )
 }
+

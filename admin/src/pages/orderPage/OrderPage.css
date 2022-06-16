@@ -1,3 +1,11 @@
 .order__container {
     margin: 10px 0;
 }
+
+.shipped {
+    display: flex;
+    justify-content: space-evenly;
+    -webkit-box-shadow: 3px 5px 15px -6px #000000;
+    box-shadow: 3px 5px 15px -6px #000000;
+    padding: 10px 0;
+}
