@@ -15,6 +15,7 @@ export default function PaymentPage() {
         Total: getBasketTotal(basket),
         Status: "processing",
         Address: undefined
+        
 
     })
     const [paid,setPaid] = useState(false);
@@ -53,7 +54,10 @@ export default function PaymentPage() {
               },
             onApprove: async (data,actions) =>{
                 const order = await actions.order.capture()
+                console.table(data)
                 setPaid(true)
+                
+                
             },
             onError: async (err) =>{
                 console.error(err)
