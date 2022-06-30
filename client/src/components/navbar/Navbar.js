@@ -3,6 +3,7 @@ import{Navbar,Container,Nav,NavDropdown,Form,FormControl,Button} from 'react-boo
 import { useNavigate } from 'react-router-dom';
 import { useStateValue } from '../../StateProvider';
 import { Link } from 'react-router-dom';
+import './Navbar.css'
 
 export default function Navbars() {
     const [{basket,user},dispatch] = useStateValue();
@@ -25,9 +26,7 @@ export default function Navbars() {
         navbarScroll
       >
         <Nav.Link href="#action1">Home</Nav.Link>
-        <Link to="/basket">
-            <Nav >{basket?.length}</Nav>
-        </Link>
+        
         <NavDropdown title="Link" id="navbarScrollingDropdown">
           <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
           <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
@@ -46,7 +45,9 @@ export default function Navbars() {
           aria-label="Search"
         />
         <Button variant="outline-success">Search</Button>
-        <Nav.Link href="/basket">Basket</Nav.Link>
+        <Link to="/basket" className="basket">
+            <Nav >Basket {basket?.length}</Nav>
+        </Link>
       </Form>
       {userid ? <Nav.Link onClick={()=>{localStorage.removeItem('userId'); window.location.reload() }}>Logout</Nav.Link> :<> <Nav.Link onClick={()=>{navigate('/signup')}}>Register</Nav.Link> <Nav.Link onClick={()=>{navigate('/login')}}>Login</Nav.Link></> }
       

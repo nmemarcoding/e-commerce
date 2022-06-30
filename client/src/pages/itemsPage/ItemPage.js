@@ -4,7 +4,7 @@ import Axios from '../../hook/axios.js'
 import './ItemPage.css'
 
 export default function ItemPage() {
-    const [items,setItems] = useState([]);
+    const [items,setItems] = useState();
     useEffect(() => {
         Axios.get('/item').then((res)=>{
         
@@ -13,13 +13,17 @@ export default function ItemPage() {
             })
     },[])
     return (
-        <div className="itemPage__container">
+        <>
+        {items ? <div className="itemPage__container">
             {items && items.map((data,index)=>(
                 <div key = {index} className="item__containers">
                     <ItemCard items = {data}/>
                 </div>
                 
             ))}
-        </div>
+            
+        </div>: <div>loading</div>}
+        </>
+        
     )
 }

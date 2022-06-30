@@ -39,7 +39,7 @@ mongoose.connection.on("conected", () => {
     console.log("mangoDB conected")
 })
 
-app.listen(505, () => {
+app.listen(process.env.PORT || 505, () => {
     connect()
     console.log("connected to server on port 505!")
 })
