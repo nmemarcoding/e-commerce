@@ -14,6 +14,7 @@
 ## Usage
 Client [Link](https://e-commerce1400.web.app/)
 Admin [Link](https://e-commerce1400-admin.web.app/)
+* Use admin/admin1234 for admin login
 
 <img width="1271" alt="Screen Shot 2022-06-30 at 9 28 37 AM" src="https://user-images.githubusercontent.com/94582549/176729662-9d1835b8-3994-4a6a-89de-862ea15b4718.png">
 
