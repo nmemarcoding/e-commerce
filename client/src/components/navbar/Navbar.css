@@ -3,10 +3,6 @@
     }
     
     a.basket {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         text-decoration: none;
-        margin-left: 40px;
-        width: 100%;
+        margin-left: 20px;
     }

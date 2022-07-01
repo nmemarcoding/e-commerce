@@ -45,12 +45,13 @@ export default function Navbars() {
           aria-label="Search"
         />
         <Button variant="outline-success">Search</Button>
-        <Link to="/basket" className="basket">
+        
+      </Form>
+      
+      {userid ? <Nav.Link onClick={()=>{localStorage.removeItem('userId'); window.location.reload() }}>Logout</Nav.Link> :<> <Nav.Link onClick={()=>{navigate('/signup')}}>Register</Nav.Link> <Nav.Link onClick={()=>{navigate('/login')}}>Login</Nav.Link></> }
+      <Link to="/basket" className="basket">
             <Nav >Basket {basket?.length}</Nav>
         </Link>
-      </Form>
-      {userid ? <Nav.Link onClick={()=>{localStorage.removeItem('userId'); window.location.reload() }}>Logout</Nav.Link> :<> <Nav.Link onClick={()=>{navigate('/signup')}}>Register</Nav.Link> <Nav.Link onClick={()=>{navigate('/login')}}>Login</Nav.Link></> }
-      
     </Navbar.Collapse>
   </Container>
 </Navbar>

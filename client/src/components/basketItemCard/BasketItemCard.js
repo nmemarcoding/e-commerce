@@ -1,5 +1,7 @@
 import React from 'react'
 import { useStateValue } from '../../StateProvider';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 export default function BasketItemCard({items}) {
     // const removeFromBasket = ()=>{
@@ -29,16 +31,17 @@ export default function BasketItemCard({items}) {
     }
     return (
         <div className="itemCard">
-            <div className="card">
-                <img className="itemCard__image"src={items.photos[0]}></img>
-                <div className="container">
-                    <h4><b>{items.name}</b></h4>
-                    <p><b>{items.price} $</b></p>
-                    <p className="itemCard__description">{items.description}</p>
-                </div>
-                <button className="addtocard"  onClick={removeFromBasket}>REMOVE FROM CARD</button>
-            </div>
-            
+            <Card style={{ width: '18rem' }}>
+                <Card.Img className="itemCard__image"variant="top" src={items.photos[0]} />
+                <Card.Body>
+                    <Card.Title>{items.name}</Card.Title>
+                    <Card.Text>
+                        <p><b>{items.price} $</b></p>
+                        <p className="itemCard__description">{items.description}</p>
+                    </Card.Text>
+                    <Button variant="primary" onClick={removeFromBasket} >REMOVE FROM CARD</Button>
+                </Card.Body>
+            </Card>
         
         </div>
         
