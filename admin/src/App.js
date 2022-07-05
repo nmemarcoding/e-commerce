@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Home from './pages/home/Home.js'
 import { BrowserRouter as Router,Routes,Route, } from 'react-router-dom';
 import LoginPage from './pages/loginPage/LoginPage.js';
-
+import Axios from './hooks/axios.js'
 function App() {
   const [admin,setAdmin] = useState(false);
   useEffect(() => {
@@ -10,6 +10,9 @@ function App() {
       setAdmin(true)
     }
   });
+  useEffect(() => {
+    Axios.get('/')
+},[])
 
   return (
 

@@ -12,6 +12,9 @@ import BasketPage from './pages/basketPage/BasketPage';
 import PaymentPage from './pages/paymentPage/PaymentPage';
 
 function App() {
+  useEffect(() => {
+    Axios.get('/')
+},[])
   
   try{
     Axios.get('/item').then((res)=>{

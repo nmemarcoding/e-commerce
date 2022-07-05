@@ -4,22 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 export default function BasketItemCard({items}) {
-    // const removeFromBasket = ()=>{
-        
-    //     if(sessionStorage.getItem("basket")){
-    //         var arr = JSON.parse(sessionStorage.getItem("basket"))
-    //         const indexOfObject = arr.findIndex(object => {
-    //         return object._id === items._id;
-    //             });
-    //         arr.splice(indexOfObject, 1);
-    //         window.sessionStorage.setItem("basket", JSON.stringify(arr));
-            
-    //         if(arr.length === 0){
-    //             window.sessionStorage.removeItem("basket");
-    //         }
-    //         window.location.reload();
-    //     }
-    // }
     const [{basket},dispatch] = useStateValue();
 
     const removeFromBasket =()=>{
